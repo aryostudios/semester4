@@ -16,16 +16,6 @@ const navbar = () => {
             className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
             id="menu"
           >
-            <li className="nav-item">
-              <a
-                href="admin"
-                className="nav-link align-middle px-0"
-                style={{ color: "var(--bs-white)" }}
-              >
-                <ion-icon name="cube"></ion-icon>{" "}
-                <span className="ms-1 d-none d-sm-inline">Dashboard</span>
-              </a>
-            </li>
             <li>
               <a
                 href="#submenu1"
@@ -43,21 +33,31 @@ const navbar = () => {
                 href="#"
                 className="nav-link px-0 align-middle"
                 style={{ color: "var(--bs-white)" }}
-                href="/admin/terbayar"
+                href="/admin/tambahAkun"
               >
-                <ion-icon name="checkbox"></ion-icon>{" "}
-                <span className="ms-1 d-none d-sm-inline">Terbayar</span>
+                <ion-icon name="add-circle"></ion-icon>{" "}
+                <span className="ms-1 d-none d-sm-inline">Add Account</span>
               </a>
             </li>
             <li>
               <a
-                href="/admin/account"
+                href="/admin/akun"
                 data-bs-toggle="collapse"
                 className="nav-link px-0 align-middle "
                 style={{ color: "var(--bs-white)" }}
               >
                 <ion-icon name="person"></ion-icon>{" "}
                 <span className="ms-1 d-none d-sm-inline">Account</span>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                href="/admin/login"
+                className="nav-link align-middle px-0"
+                style={{ color: "var(--bs-white)" }}
+              >
+                <ion-icon name="close-circle"></ion-icon>{" "}
+                <span className="ms-1 d-none d-sm-inline">Log out</span>
               </a>
             </li>
           </ul>

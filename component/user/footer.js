@@ -33,30 +33,24 @@ export default function Home() {
               </ul>
             </div>
             <div className="col-md-6 item text">
-              <h3>Company Name</h3>
+              <h3>StudioPhotograph</h3>
               <p>
-                Praesent sed lobortis mi. Suspendisse vel placerat ligula.
-                Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
-                tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel
-                in justo.
+                Dengan Pelayanan Terbaik, Berkualitas dan Harga Terjangkau
               </p>
             </div>
             <div className="col item social">
               <a href="#">
-                <i className="icon ion-social-facebook" />
+              <ion-icon name="logo-facebook"></ion-icon>
               </a>
               <a href="#">
-                <i className="icon ion-social-twitter" />
+              <ion-icon name="logo-twitter"></ion-icon>
               </a>
               <a href="#">
-                <i className="icon ion-social-snapchat" />
-              </a>
-              <a href="#">
-                <i className="icon ion-social-instagram" />
+              <ion-icon name="logo-instagram"></ion-icon>
               </a>
             </div>
           </div>
-          <p className="copyright">Company Name © 2021</p>
+          <p className="copyright">StudioPhotograph © 2021</p>
         </div>
       </footer>
     </div>

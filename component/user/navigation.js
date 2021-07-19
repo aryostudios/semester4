@@ -28,7 +28,7 @@ export default function Home() {
                   Gallery
                 </a>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a className="nav-link active" href="/user/cv">
                   CV
                 </a>
@@ -37,7 +37,7 @@ export default function Home() {
                 <a className="nav-link" href="/user/layanan">
                   Layanan
                 </a>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <a className="nav-link" href="/user/booking">
                   Booking
