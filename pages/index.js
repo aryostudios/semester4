@@ -97,7 +97,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <section
+            {/* <section
               className="portfolio-block call-to-action border-bottom"
               style={{ textAlign: "center" }}
             >
@@ -105,7 +105,7 @@ export default function Home() {
               <button className="btn btn-warning" type="button">
                 Lainya
               </button>
-            </section>
+            </section> */}
             <section className="portfolio-block call-to-action border-bottom" />
             <section className="portfolio-block skills">
               <div className="container">
@@ -210,7 +210,7 @@ export default function Home() {
               </div>
             </section>
           </main>
-          <section className="portfolio-block website gradient">
+          {/* <section className="portfolio-block website gradient">
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-md-12 col-lg-5 offset-lg-1 text">
@@ -237,7 +237,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
         </div>
       </Layout>
     </div>

@@ -37,8 +37,8 @@
               Log In
             </a>
           </div>
-          <a className="forgot" href="#">
-            Forgot your email or password?
+          <a className="forgot" href="/">
+            HOME
           </a>
         </form>
       </section>
