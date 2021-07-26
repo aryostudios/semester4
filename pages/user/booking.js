@@ -1,14 +1,36 @@
 import Layout from "../../component/user/layout";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 const form = () => {
-  const [paket, setPaket] = useState('')
+  const [_namaPaket, setNamaPaket] = useState("");
+  const [_harga, setHarga] = useState("");
+  const [_lokasi, setLokasi] = useState("");
+  const [_foto, setFoto] = useState("");
+
+  const router = useRouter();
+  const { namaPaket, harga, lokasi, foto} = router.query;
+
+  useEffect(() => {
+    if (typeof namaPaket == "string") {
+      setNamaPaket(namaPaket);
+    }
+    if (typeof harga == "string") {
+      setHarga(harga);
+    }
+    if (typeof lokasi == "string") {
+      setLokasi(lokasi);
+    }
+    if (typeof foto == "string") {
+      setFoto(foto);
+    }
+  }, [namaPaket, harga, lokasi, foto]);
+
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [nomer, setNomer] = useState("");
   const [alamat, setAlamat] = useState("");
   const [jadwal, setJadwal] = useState("");
 
-  console.log(setPaket)
   async function submitHandler(e) {
     e.preventDefault();
     try {
@@ -18,7 +40,7 @@ const form = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          paket,
+          namaPaket:_namaPaket,
           nama,
           email,
           nomer,
@@ -48,94 +70,33 @@ const form = () => {
               </div>
               <main>
                 <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                  <div className="col">
-                    <div className="card mb-4 rounded-3 shadow-sm">
-                      <div className="card-header py-3">
-                        <h4 className="my-0 fw-normal">Regular</h4>
-                      </div>
-                      <div className="card-body">
-                        <h1 className="card-title pricing-card-title">
-                          100k
-                          <small className="text-muted fw-light">/order</small>
-                        </h1>
-                        <ul className="list-unstyled mt-3 mb-4">
-                          <li>1 Lokasi</li>
-                          <li>20 Foto</li>
-                          <li>Kualitas Tinggi</li>
-                          <li>Gratis Makanan</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="card mb-4 rounded-3 shadow-sm">
-                      <div className="card-header py-3">
-                        <h4 className="my-0 fw-normal">Medium</h4>
-                      </div>
-                      <div className="card-body">
-                        <h1 className="card-title pricing-card-title">
-                          200k
-                          <small className="text-muted fw-light">/order</small>
-                        </h1>
-                        <ul className="list-unstyled mt-3 mb-4">
-                          <li>1 Lokasi</li>
-                          <li>100 Foto</li>
-                          <li>Kualitas Tinggi</li>
-                          <li>Gratis Makanan</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                  <div className="col"></div>
                   <div className="col">
                     <div className="card mb-4 rounded-3 shadow-sm border-warning">
                       <div className="card-header py-3 text-white bg-warning border-warning">
-                        <h4 className="my-0 fw-normal">VIP</h4>
+                        <h4 className="my-0 fw-normal">{_namaPaket}</h4>
                       </div>
                       <div className="card-body">
                         <h1 className="card-title pricing-card-title">
-                          250k
+                        {_harga}
                           <small className="text-muted fw-light">/order</small>
                         </h1>
                         <ul className="list-unstyled mt-3 mb-4">
-                          <li>2 Lokasi</li>
-                          <li>150 Foto</li>
+                          <li>{_lokasi} Lokasi</li>
+                          <li>{_foto} Foto</li>
                           <li>Kualitas Tinggi</li>
                           <li>Gratis Makanan</li>
                         </ul>
                       </div>
                     </div>
                   </div>
+                  <div className="col"></div>
                 </div>
               </main>
               <form
                 style={{ background: "rgb(217,216,211)" }}
                 onSubmit={submitHandler}
               >
-                <div className="mb-3">
-                  <label className="form-label" htmlFor="number">
-                    Paket
-                  </label>
-                  <div class="row">
-                    <select
-                      style={{
-                        width: 331,
-                        background: "var(--bs-dark)",
-                        color: "var(--bs-light)",
-                      }}
-                      className="form-select"
-                      name= ""
-                      value = {paket}
-                      onChange={(e) => setPaket(e.target.value)}
-                      required
-                    >
-                        <option value="Regular" selected>
-                          Regular
-                        </option>
-                        <option value="Medium">Medium</option>
-                        <option value="VIP">VIP</option>
-                    </select>
-                  </div>
-                </div>
                 <div className="mb-3">
                   <label className="form-label" htmlFor="number">
                     Nama Lengkap

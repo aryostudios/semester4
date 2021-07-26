@@ -1,6 +1,14 @@
 import Layout from "../component/user/layout";
 import Link from "next/dist/client/link";
+import { usePaket } from "../lib/swr-fetch";
 export default function Home() {
+  const { data, error } = usePaket();
+  if (error) {
+    return <div>Error Loading</div>;
+  }
+  if (!data) {
+    return <div>Loading.....</div>;
+  }
   return (
     <div>
       <Layout>
@@ -97,15 +105,6 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            {/* <section
-              className="portfolio-block call-to-action border-bottom"
-              style={{ textAlign: "center" }}
-            >
-              <h4>Lihat Layanan Lainya dari kami..</h4>
-              <button className="btn btn-warning" type="button">
-                Lainya
-              </button>
-            </section> */}
             <section className="portfolio-block call-to-action border-bottom" />
             <section className="portfolio-block skills">
               <div className="container">
@@ -116,25 +115,26 @@ export default function Home() {
                   <div className="container">
                     <main>
                       <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                      {data.map((paket, idx) => (
                         <div className="col">
                           <div className="card mb-4 rounded-3 shadow-sm">
-                            <div className="card-header py-3">
-                              <h4 className="my-0 fw-normal">Regular</h4>
+                            <div className="card-header py-3 bg-warning">
+                              <h4 className="my-0 fw-normal">{paket.nama}</h4>
                             </div>
                             <div className="card-body">
                               <h1 className="card-title pricing-card-title">
-                                100k
+                                {paket.harga}
                                 <small className="text-muted fw-light">
                                   /order
                                 </small>
                               </h1>
                               <ul className="list-unstyled mt-3 mb-4">
-                                <li>1 Lokasi</li>
-                                <li>20 Foto</li>
+                                <li>{paket.lokasi} Lokasi</li>
+                                <li>{paket.foto} Foto</li>
                                 <li>Kualitas Tinggi</li>
                                 <li>Gratis Makanan</li>
                               </ul>
-                              <Link href="/booking">
+                              <Link href={`/user/booking?namaPaket=${paket.nama}&harga=${paket.harga}&lokasi=${paket.lokasi}&foto=${paket.foto}`}>
                                 <button
                                   type="button"
                                   className="w-100 btn btn-lg btn-outline-warning text-dark"
@@ -145,64 +145,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="col">
-                          <div className="card mb-4 rounded-3 shadow-sm">
-                            <div className="card-header py-3">
-                              <h4 className="my-0 fw-normal">Medium</h4>
-                            </div>
-                            <div className="card-body">
-                              <h1 className="card-title pricing-card-title">
-                                200k
-                                <small className="text-muted fw-light">
-                                  /order
-                                </small>
-                              </h1>
-                              <ul className="list-unstyled mt-3 mb-4">
-                                <li>1 Lokasi</li>
-                                <li>100 Foto</li>
-                                <li>Kualitas Tinggi</li>
-                                <li>Gratis Makanan</li>
-                              </ul>
-                              <Link href="/booking">
-                                <button
-                                  type="button"
-                                  className="w-100 btn btn-lg btn-warning text-white "
-                                >
-                                  Beli Paket
-                                </button>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col">
-                          <div className="card mb-4 rounded-3 shadow-sm border-warning">
-                            <div className="card-header py-3 text-white bg-warning border-warning">
-                              <h4 className="my-0 fw-normal">VIP</h4>
-                            </div>
-                            <div className="card-body">
-                              <h1 className="card-title pricing-card-title">
-                                250k
-                                <small className="text-muted fw-light">
-                                  /order
-                                </small>
-                              </h1>
-                              <ul className="list-unstyled mt-3 mb-4">
-                                <li>2 Lokasi</li>
-                                <li>150 Foto</li>
-                                <li>Kualitas Tinggi</li>
-                                <li>Gratis Makanan</li>
-                              </ul>
-                              <Link href="/booking">
-                                <button
-                                  type="button"
-                                  className="w-100 btn btn-lg btn-warning text-white "
-                                >
-                                  Beli Paket
-                                </button>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </main>
                   </div>
@@ -210,34 +153,6 @@ export default function Home() {
               </div>
             </section>
           </main>
-          {/* <section className="portfolio-block website gradient">
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-md-12 col-lg-5 offset-lg-1 text">
-                  <h3>Website Project</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aenean eget velit ultricies, feugiat est sed, efr nunc,
-                    vivamus vel accumsan dui. Quisque ac dolor cursus, volutpat
-                    nisl vel, porttitor eros.
-                  </p>
-                </div>
-                <div className="col-md-12 col-lg-5">
-                  <div className="portfolio-laptop-mockup">
-                    <div className="screen">
-                      <div
-                        className="screen-content"
-                        style={{
-                          backgroundImage: 'url("image6.png")',
-                        }}
-                      />
-                    </div>
-                    <div className="keyboard" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section> */}
         </div>
       </Layout>
     </div>

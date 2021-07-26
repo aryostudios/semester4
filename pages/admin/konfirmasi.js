@@ -25,31 +25,6 @@ export default function Home() {
     alert("Data telah dihapus");
     Router.push("/admin/konfirmasi");
   }
-
-  async function pindahData(e) {
-    e.preventDefault();
-    try {
-      const res = await fetch("http://localhost:3000/api/pindahData", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nama,
-          email,
-          nomer,
-          alamat,
-          jadwal,
-        }),
-      });
-      const json = await res.json();
-      if (!res.ok) throw Error(json.message);
-      alert("Pesanan Terkonfirmasi");
-      window.location.href = "/admin/konfirmasi";
-    } catch (e) {
-      throw Error(e.message);
-    }
-  }
   return (
     <>
       <LayoutAdmin>
@@ -96,7 +71,7 @@ export default function Home() {
                           >
                             TOLAK
                           </button>
-                          <span>&nbsp; &nbsp; &nbsp;&nbsp;</span>
+                          {/* <span>&nbsp; &nbsp; &nbsp;&nbsp;</span>
                             <button
                               className="btn btn-primary"
                               type="button"
@@ -104,7 +79,7 @@ export default function Home() {
                               onClick={(e) => pindahData(e.target.value)}
                             >
                               TERIMA
-                            </button>
+                            </button> */}
                         </td>
                       </tr>
                     ))}

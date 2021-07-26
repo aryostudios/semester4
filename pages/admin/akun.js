@@ -23,7 +23,7 @@ export default function Home() {
     mutate(`/api/hapusUser`);
     //setDeleting (false)
     alert("User telah dihapus");
-    Router.push("/admin/akun");
+    Router.push("/admin/login");
   }
 
   return (
